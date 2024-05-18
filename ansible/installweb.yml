@@ -48,7 +48,7 @@
         dest: "/etc/apache2/sites-available/{{ http_conf }}"
     - name: 'Controle de Diretório Virtual Host'
       template:
-        src: "files/express.conf"
+        src: "files/direxpress.conf"
         dest: "/etc/apache2/conf-available/direxpress.conf"
     - name: 'Entrada DNS arquivo /etc/hosts'
       template:
