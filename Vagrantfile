@@ -19,6 +19,11 @@ Vagrant.configure("2") do |config|
 			ansible.playbook = "installdocker.yml"
 			ansible.install_mode = "pip"
 		end
+                controle.vm.provision "ansible_local" do |ansible|
+                        ansible.playbook = "installjenkins.yml"
+                        ansible.install_mode = "pip"
+                end
+
 
 #		controle.vm.provision "shell", inline: "apt -y install git"
 	end
@@ -32,6 +37,15 @@ Vagrant.configure("2") do |config|
                         vb.memory = "512"
                         vb.cpus = 2
                 end
+                web.vm.provision "ansible_local" do |ansible|
+                        ansible.playbook = "playbook.yml"
+                        ansible.install_mode = "pip"
+                end
+                web.vm.provision "ansible_local" do |ansible|
+                        ansible.playbook = "installdocker.yml"
+                        ansible.install_mode = "pip"
+                end
+
         end
 
         config.vm.define "db" do |db|
